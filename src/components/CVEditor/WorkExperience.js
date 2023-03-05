@@ -14,7 +14,18 @@ export default function WorkExperience() {
       {data.map((anElement) => {
         return (
           <React.Fragment key={anElement.key}>
-            <h4>A Work Experience:</h4>
+            <div style={{ display: "flex" }}>
+              <button
+                style={{ flexBasis: "0" }}
+                onClick={() =>
+                  dispatch({ task: "deleteWorkExperience", key: anElement.key })
+                }
+              >
+                {" "}
+                Delete
+              </button>
+              <h4>A Work Experience:</h4>
+            </div>
             <input
               type="text"
               placeholder="Work Title"
@@ -56,10 +67,29 @@ export default function WorkExperience() {
             ></input>
             {/* <input type="text" placeholder="Additional Info:" value={this.state.}></input> */}
             <h6>bullet points</h6>
+            <button
+              onClick={() =>
+                dispatch({ task: "addBullet", key: anElement.key })
+              }
+            >
+              Add bullet
+            </button>
             <ul>
               {anElement.bulletPoint.map((aBullet) => (
-                <li key={aBullet.key}>
+                <li style={{ display: "flex" }} key={aBullet.key}>
                   {" "}
+                  <button
+                    style={{ flexBasis: "0" }}
+                    onClick={() =>
+                      dispatch({
+                        task: "deleteBullet",
+                        key: anElement.key,
+                        bulletKey: aBullet.key,
+                      })
+                    }
+                  >
+                    delete
+                  </button>
                   <input
                     value={aBullet.bullet}
                     onChange={(e) =>
@@ -78,6 +108,9 @@ export default function WorkExperience() {
           </React.Fragment>
         );
       })}
+      <button onClick={() => dispatch({ task: "addWorkExperience" })}>
+        Add Work Experience{" "}
+      </button>
     </>
   );
 }

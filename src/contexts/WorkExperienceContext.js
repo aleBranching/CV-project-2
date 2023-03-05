@@ -5,7 +5,7 @@ import { original } from "immer";
 
 let dataContext = createContext(null);
 let dataReducerContext = createContext(null);
-
+Got an attendance award
 export default function WorkExperienceContext({ children }) {
   let [state, dispatch] = useImmerReducer(reducer, initialData);
 
@@ -67,7 +67,7 @@ let reducer = (draft, action) => {
         };
       });
 
-    case "addField":
+    case "addWorkExperience":
       draft.push({
         key: uniqid(),
         workTitle: "",
@@ -77,6 +77,26 @@ let reducer = (draft, action) => {
           { key: uniqid(), bullet: "did this for this amount of time" },
         ],
       });
+      break;
+    case "deleteWorkExperience":
+      let index = draft.findIndex((anElement) => anElement.key === action.key);
+      draft.splice(index, 1);
+      break;
+    case "deleteBullet":
+      // action fields: key, bulletKey
+      let parentIndex = draft.findIndex(
+        (anElement) => anElement.key === action.key
+      );
+      let bulletIndex = draft[parentIndex].bulletPoint.findIndex(
+        (anElement) => anElement.key === action.bulletKey
+      );
+      draft[parentIndex].bulletPoint.splice(bulletIndex, 1);
+      break;
+    case "addBullet":
+      let parentIndex2 = draft.findIndex(
+        (anElement) => anElement.key === action.key
+      );
+      draft[parentIndex2].bulletPoint.push({ key: uniqid(), bullet: "" });
       break;
     default:
       console.error("a case has not been called prroperly");

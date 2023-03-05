@@ -9,6 +9,7 @@ export default function PersonalDetails() {
 
   return (
     <>
+      <h4>Personal Statement</h4>
       <input
         type="text"
         placeholder="Name:"
