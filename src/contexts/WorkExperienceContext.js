@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import uniqid from "uniqid";
 import { useImmerReducer } from "use-immer";
+import { original } from "immer";
 
 let dataContext = createContext(null);
 let dataReducerContext = createContext(null);
@@ -17,11 +18,11 @@ export default function WorkExperienceContext({ children }) {
   );
 }
 
-function useWorkDataContext() {
+export function useWorkDataContext() {
   return useContext(dataContext);
 }
 
-function useWorkDataDispatch() {
+export function useWorkDataDispatch() {
   return useContext(dataReducerContext);
 }
 
@@ -29,16 +30,40 @@ let reducer = (draft, action) => {
   switch (action.task) {
     case "editMain":
       return draft.map((anElement) => {
-        if (anElement.key === action.key) {
+        if (anElement.key === action.key && action.field === "bulletPoint") {
+          console.log("here", original(anElement));
           return {
-            ...draft,
+            ...original(anElement),
+
+            bulletPoint: anElement.bulletPoint.map((aBullet) => {
+              console.log("bullet data key", aBullet.key);
+              console.log("bullet dispach key", action.bulletPointId);
+              console.log("test", original(aBullet));
+
+              if (aBullet.key === action.bulletPointId) {
+                return { ...original(aBullet), bullet: action.value };
+              }
+
+              return { ...original(aBullet) };
+            }),
+          };
+        }
+        if (anElement.key === action.key) {
+          //   console.log("test", original(anElement));
+          //   console.log("here")
+          return {
+            ...original(anElement),
             [action.field]: action.value,
-            bulletPoint: JSON.stringify(JSON.parse(anElement.bulletPoint)),
+            bulletPoint: anElement.bulletPoint.map((aBullet) => {
+              return { ...original(aBullet) };
+            }),
           };
         }
         return {
           ...anElement,
-          bulletPoint: JSON.stringify(JSON.parse(anElement.bulletPoint)),
+          bulletPoint: anElement.bulletPoint.map((aBullet) => {
+            return { ...aBullet };
+          }),
         };
       });
 
