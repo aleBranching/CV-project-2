@@ -7,18 +7,21 @@ export default function Education() {
   return (
     // details is an array so need to map this instead
     <>
+      <div className="heading">Education</div>
       {details.map((detail) => {
         return (
-          <React.Fragment key={detail.key}>
-            <h4> title</h4>
-            <p>{detail.educationTitle}</p>
-            <h4> startDate</h4>
-            <p>{detail.startDate}</p>
-            <h4> finish date</h4>
-            <p>{detail.finishDate}</p>
-            <h4> additional Info</h4>
-            <p>{detail.additionalInfo}</p>
-          </React.Fragment>
+          <div key={detail.key} className="anEducation">
+            <div className="heavySubWeight">{detail.educationTitle}</div>
+            <span>&nbsp;&nbsp;</span>
+            <div>({detail.startDate})</div>
+            <span>&nbsp;</span>
+            {"  - "}
+            <span>&nbsp;</span>
+            <div>({detail.finishDate})</div>
+            <span>&nbsp;</span>
+
+            <div>{detail.additionalInfo}</div>
+          </div>
         );
       })}
     </>

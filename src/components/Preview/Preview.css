@@ -1,6 +1,60 @@
-.Preview {
+/* .Preview {
   border: 1px solid blue;
-  --width: 30vw;
+  --width: 700px;
   width: var(--width);
   height: calc(var(--width) * 1.5);
+  font-size: 1rem;
+  font-family: calibri;
+  padding-left: 0.8rem;
+  box-sizing: border-box;
+} */
+
+.basicInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: calibri;
+  margin-top: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+.basicInfo .name {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.basicInfo :not(.name) {
+  font-size: 0.8rem;
+}
+
+.heading {
+  text-decoration: underline;
+  font-weight: 900;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+.personalStatement {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.anEducation {
+  display: flex;
+  /* font-size: 0.8rem; */
+  /* flex-grow: 0; */
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.heavySubWeight {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.workExperience {
+  font-size: 0.9rem;
+}
+
+.bulletPoints {
+  margin-top: 0.2rem;
 }

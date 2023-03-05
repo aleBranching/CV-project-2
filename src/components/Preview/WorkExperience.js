@@ -5,20 +5,23 @@ export default function WorkExperience() {
   let data = useWorkDataContext();
 
   return (
-    <>
-      <h4>Work Experience </h4>
+    <div className="workExperience">
+      <div className="heading">Work Experience </div>
 
       {data.map((anElement) => {
         return (
           <React.Fragment key={anElement.key}>
-            <h6> Work title</h6>
-            <p>{anElement.workTitle}</p>
-            <h6> Start Date</h6>
-            <p>{anElement.startDate}</p>
-            <h6> Finish Date</h6>
-            <p>{anElement.finishDate}</p>
+            <div className="heavySubWeight">{anElement.workTitle}</div>
 
-            <ul>
+            <div style={{ display: "flex", margin: "0.3rem 0 0.3rem 0" }}>
+              <div>({anElement.startDate})</div>
+              <span>&nbsp;</span>
+              <div>-</div>
+              <span>&nbsp;</span>
+              <div>({anElement.finishDate})</div>
+            </div>
+
+            <ul className="bulletPoints">
               {anElement.bulletPoint.map((aBullet) => {
                 return <li key={aBullet.key}>{aBullet.bullet}</li>;
               })}
@@ -26,6 +29,6 @@ export default function WorkExperience() {
           </React.Fragment>
         );
       })}
-    </>
+    </div>
   );
 }

@@ -5,16 +5,16 @@ export default function PersonalDetails() {
 
   return (
     <>
-      <h4>Name</h4>
-      <h5>{details.name}</h5>
-      <h4>Email</h4>
-      <h5>{details.email}</h5>
+      <div className="basicInfo">
+        <div className="name">{details.name}</div>
 
-      <h4>Phone number</h4>
-      <h5>{details.phoneNumber}</h5>
+        <div className="email">{details.email}</div>
 
-      <h4>personalStatement</h4>
-      <h5>{details.personalStatement}</h5>
+        <div className="phone">{details.phoneNumber}</div>
+      </div>
+
+      <div className="heading">Personal Statement</div>
+      <div className="personalStatement">{details.personalStatement}</div>
     </>
   );
 }
