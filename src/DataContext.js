@@ -1,6 +1,14 @@
+import { useState } from "react";
 import uniqid from "uniqid";
+import { useImmer } from "use-immer";
 
-export default function DataContext({ children }) {}
+export default function DataContext({ children }) {
+  let [personalDetails, setPersonalDetails] = useState(
+    initialData.personalDetails
+  );
+
+  let [educationDetails, setEducationDetails] = useState(initialData.education);
+}
 
 let initialData = {
   personalDetails: {
