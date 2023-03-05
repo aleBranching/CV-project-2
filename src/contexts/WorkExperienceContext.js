@@ -5,7 +5,7 @@ import { original } from "immer";
 
 let dataContext = createContext(null);
 let dataReducerContext = createContext(null);
-Got an attendance award
+
 export default function WorkExperienceContext({ children }) {
   let [state, dispatch] = useImmerReducer(reducer, initialData);
 
