@@ -27,7 +27,6 @@ export function useDetailsReducer() {
 let reducer = (state, action) => {
   switch (action.task) {
     case "edit":
-      console.log("the state", state);
       return state.map((elememt) =>
         elememt.key === action.key
           ? { ...elememt, [action.field]: action.value }

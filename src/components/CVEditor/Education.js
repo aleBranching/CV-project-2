@@ -4,12 +4,10 @@ import { useDetails, useDetailsReducer } from "../../contexts/EducationContext";
 export default function Education() {
   let details = useDetails();
   let dispatch = useDetailsReducer();
-  console.log(details);
 
   return (
     <div>
       {details.map((anElement) => {
-        console.log("the details", anElement);
         return (
           <div key={anElement.key}>
             <h4>An Education:</h4>
